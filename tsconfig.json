@@ -8,12 +8,12 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5",
+    "target": "es5", // 目标js是什么版本（typescript都是要编译成js的）
     "typeRoots": [
       "node_modules/@types"
     ],
     "lib": [
-      "es2017",
+      "es2017", // 当前js版本
       "dom"
     ]
   }
