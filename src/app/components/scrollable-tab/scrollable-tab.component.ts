@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-interface TopMenu {
+export interface TopMenu {
   title: string;
   link: string;
 }
@@ -10,82 +10,31 @@ interface TopMenu {
   templateUrl: './scrollable-tab.component.html',
   styleUrls: ['./scrollable-tab.component.css']
 })
-export class ScrollableTabComponent implements OnInit {
-
+/**
+ * 接口是可选的，也就说只要有类似 ngOnInit 这样的方法存在
+ * 生命周期的钩子函数还是正常执行
+ * 但建议实现接口，好处一个是不会由于误删除某个钩子函数
+ * 另一个是对组件涉及到哪些生命周期一目了然
+ */
+export class ScrollableTabComponent {
   selectedIndex = -1;
-  menus: TopMenu[] = [
-    {
-      title: '热门',
-      link: ''
-    },
-    {
-      title: '男装',
-      link: ''
-    },
-    {
-      title: '百货',
-      link: ''
-    },
-    {
-      title: '运动',
-      link: ''
-    },
-    {
-      title: '手机',
-      link: ''
-    },
-    {
-      title: '家纺',
-      link: ''
-    },
-    {
-      title: '食品',
-      link: ''
-    },
-    {
-      title: '电器',
-      link: ''
-    },
-    {
-      title: '鞋包',
-      link: ''
-    },
-    {
-      title: '汽车',
-      link: ''
-    },
-    {
-      title: '水果',
-      link: ''
-    },
-    {
-      title: '电脑',
-      link: ''
-    },
-    {
-      title: '内衣',
-      link: ''
-    },
-    {
-      title: '家装',
-      link: ''
-    },
-    {
-      title: '母婴',
-      link: ''
-    },
-    {
-      title: '美妆',
-      link: ''
-    },
-    {
-      title: '家具',
-      link: ''
-    }
-  ];
-  constructor() { }
-
-  ngOnInit() {
+  @Input() menus: TopMenu[] = [];
+  @Input() backgroundColor = '#fff';
+  @Input() titleActiveColor = 'yellow';
+  @Input() titleColor = 'blue';
+  @Input() indicatorColor = 'brown';
+  @Output() tabSelected = new EventEmitter();
+  /**
+   * 第一个执行，构造函数是建立这个类的实例
+   * 之所以我们没有显性的使用 new ScrollableTabComponent()
+   * 是因为系统框架帮我们做了这个，这是依赖注入的概念
+   */
+  constructor() {
+    console.log('构造函数');
   }
 
+  handleSelection(index: number) {
+    this.selectedIndex = index;
+    this.tabSelected.emit(this.menus[this.selectedIndex]);
+  }
 }
