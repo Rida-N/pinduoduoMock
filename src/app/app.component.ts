@@ -7,8 +7,7 @@ import { TopMenu, ImageSlider, ImageSliderComponent } from './components';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  @ViewChild(ImageSliderComponent, { static: true })
-  imgSlider: ImageSliderComponent;
+  @ViewChild(ImageSliderComponent, { static: true }) imgSlider: ImageSliderComponent;
   scrollableTabBgColor = 'red';
   topMenus: TopMenu[] = [
     {

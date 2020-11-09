@@ -8,7 +8,7 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5", // 目标js是什么版本（typescript都是要编译成js的）
+    "target": "es2015", // 目标js是什么版本（typescript都是要编译成js的）
     "typeRoots": [
       "node_modules/@types"
     ],
